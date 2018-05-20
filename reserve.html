@@ -1,0 +1,124 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height user-scalable=no">
+    <title>体测预约help</title>
+    <!--script-->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://malsup.github.io/jquery.form.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script> -->
+    <script src="https://cdn.bootcss.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <!--stylesheet-->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/PE.css"/>
+	<link rel="stylesheet" href="css/PE_reserve.css"/>
+</head>
+<body>
+    <img src="images/fly.png" id="fly" alt="The loggo png can't be loaded.'">
+
+	<form id="PEform" method="POST" class="table content">
+		<div class="row">
+            账号
+            <input type="text" name="id" class="cell" value="">
+        </div>
+        <div class="row">
+            密码
+            <input type="password" name="password" class="cell" value="">
+        </div>
+        <div class="row">
+            手机
+            <input type="text" name="telephone" class="cell" value="">
+        </div>
+		<div class="row">
+			<select id="campus" name="campus" class="cell" onchange="displayByCampus(this[selectedIndex].value);"> </select>
+			<select id="date" name="date" class="cell" onchange="displayWhen();"> </select>
+			<select id="when" name="when" class="cell"> </select>
+		</div>
+		<div class="row">
+			<input class="submit cell btn btn-primary btn-lg" type="button" value="开启辅助" data-toggle="modal" data-target="#modal">
+			<input class="submit cell btn btn-primary btn-lg" type="submit" onclick="cancle();" value="取消辅助">
+		</div>
+		<span class="info">你好呀vega</span>
+        <!--bootstrap modal dialog-->
+        <div class="modal fade show" id="modal" tabindex="-1" role="dialog" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">预约辅助</h5>
+                        </div>
+                        <div class="modal-body">
+                            <h5>选择项目<small class="text-muted"> 勾选想要测试的项目（可多选）</small></h5>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="bmi" name="subject[]" value="bmi" checked="checked">
+                                    <label class="custom-control-label" for="bmi">
+                                        BMI(身高体重)
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="vtc" name="subject[]" value="vtc" checked="checked">
+                                    <label class="custom-control-label" for="vtc">
+                                        肺活量
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="spt" name="subject[]" value="spt" checked="checked">
+                                    <label class="custom-control-label" for="spt">
+                                        50 米
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="slj" name="subject[]" value="slj" checked="checked">
+                                    <label class="custom-control-label" for="slj">
+                                        立定跳远
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="sar" name="subject[]" value="sar" checked="checked">
+                                    <label class="custom-control-label" for="sar">
+                                        坐位体前屈
+                                    </label>
+                                </div>
+                               <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="lrm" name="subject[]" value="lrm" checked="checked">
+                                    <label class="custom-control-label" for="lrm">
+                                        1000 米
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="plp" name="subject[]" value="plp">
+                                    <label class="custom-control-label" for="plp">
+                                        引体向上(男生选)
+                                    </label>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="xxx" name="subject[]" value="xxx">
+                                    <label class="custom-control-label" for="xxx">
+                                        仰卧起坐(女生选)
+                                    </label>
+                                </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <input type="button" class="btn btn-secondary" data-dismiss="modal" value="关闭">
+                            <input type="button" class="btn btn-primary" id="confirm" onclick="reserve();" value="确认预约">
+                        </div>
+                </div>
+            </div>
+        </div>
+	</form>
+
+    <section class="content">
+        <h3>注意事项</h3>
+        <ul  class="noted">
+            <li>取消辅助只需要输入学号</li>
+            <li>当天的场次，预约后无法取消</li>
+            <li>若下雨或场地湿滑，室外项目将停测</li>
+			<li>所有的内容都会保存在数据库中，特别指本科系统密码，如有担忧，何必使用？源码我也提供了，可以自己搭建</li>
+			<li><a href="https://github.com/ExplosiveBattery/PE-Reverse">源代码在这，同时欢迎浏览其他仓库</a></li>
+        </ul>
+    </section>
+
+    <script src='js/form.js'></script>
+</body>
+</html>

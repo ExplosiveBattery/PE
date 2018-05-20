@@ -1,0 +1,19 @@
+input#id {
+	width:160px;
+}
+div select {
+	height: 30px;
+	width: 60px;
+}
+.submit { 
+	height: 31px;
+	width: 66px; 
+	padding: 3px;
+    background: #617798;
+    border: 0;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.modal-body {
+	text-align:left;
+}
